@@ -1,7 +1,7 @@
 
 
 import { Button, Text } from "@gluestack-ui/themed";
-import { Dialog } from "components/Dialog";
+import { WarningModal } from "components/Dialog";
 import { Layout } from "components/Layout";
 import { useState } from "react";
 
@@ -17,7 +17,16 @@ export function Home() {
             <Text color="$textLight0">Abrir alerta</Text>
         </Button>
 
-        <Dialog show={showAlertDialog} setShow={setShowAlertDialog} />
+        <WarningModal 
+          show={showAlertDialog}
+          setShow={setShowAlertDialog}
+          title="Mensagem de alerta"
+          message="Este é um exemplo de um AlertDialog aplicado a um componente."
+          button={{
+            title: "Apagar",
+            action: () => setShowAlertDialog(false)
+          }}
+        />
 
       </Layout>
     )

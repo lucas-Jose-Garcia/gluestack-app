@@ -14,14 +14,22 @@ import {
 import { Text } from "@gluestack-ui/themed";
 import { Icon } from "@gluestack-ui/themed";
 import { CloseIcon } from "@gluestack-ui/themed";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 
-interface DialogProps {
+interface WarningModalProps {
+    title: string
+    message: string
+    button: buttonProps
     show: boolean
     setShow: Dispatch<SetStateAction<boolean>>
 }
 
-export function Dialog({show, setShow}: DialogProps) {
+interface buttonProps {
+  title: string
+  action: () => void
+}
+
+export function WarningModal({title, message, button, show, setShow}: WarningModalProps) {
     return (
         <AlertDialog
         isOpen={show} 
@@ -30,14 +38,14 @@ export function Dialog({show, setShow}: DialogProps) {
     <AlertDialogBackdrop />
     <AlertDialogContent>
       <AlertDialogHeader>
-        <Heading size="lg">Mensagem de alerta</Heading>
+        <Heading size="lg">{title}</Heading>
         <AlertDialogCloseButton>
           <Icon as={CloseIcon} />
         </AlertDialogCloseButton>
       </AlertDialogHeader>
       <AlertDialogBody>
         <Text size="sm">
-          Este é um exemplo de um AlertDialog padrão, para uso em larga escala, recomenda-se a criação de um componente.
+          {message}
         </Text>
       </AlertDialogBody>
       <AlertDialogFooter>
@@ -54,11 +62,9 @@ export function Dialog({show, setShow}: DialogProps) {
           <Button
             bg="$error600"
             action="negative"
-            onPress={() => {
-                setShow(false)
-            }}
+            onPress={() => button.action()}
           >
-            <ButtonText>Apagar</ButtonText>
+            <ButtonText>{button.title}</ButtonText>
           </Button>
         </ButtonGroup>
       </AlertDialogFooter>
