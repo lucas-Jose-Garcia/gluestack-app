@@ -1,6 +1,6 @@
-import { Box, useColorMode } from "@gluestack-ui/themed";
-import { ComponentProps, ReactNode } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Box, useColorMode } from '@gluestack-ui/themed';
+import { ComponentProps, ReactNode } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type BoxProps = ComponentProps<typeof Box>;
 
@@ -9,19 +9,18 @@ interface LayoutProps extends BoxProps {
 }
 
 export function Layout({ children, ...props }: LayoutProps) {
-    const colorMode = useColorMode()
-    return (
-        <SafeAreaView style={{flex: 1}}>
-            <Box
-                flex={1}
-                alignItems="center"
-                sx={{
-                    bg: colorMode === "light" ? "$backgroundLight0" : "$backgroundDark900",
-                }}
-                {...props}
-            >
-                {children}
-            </Box>
-        </SafeAreaView>
-    )
+  const colorMode = useColorMode();
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box
+        flex={1}
+        alignItems="center"
+        sx={{
+          bg: colorMode === 'light' ? '$backgroundLight0' : '$backgroundDark900',
+        }}
+        {...props}>
+        {children}
+      </Box>
+    </SafeAreaView>
+  );
 }

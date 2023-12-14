@@ -6,7 +6,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint-fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "dependencies": {
     "@gluestack-style/react": "^1.0.26",
@@ -25,7 +27,15 @@
     "@types/jest": "^29.5.11",
     "@types/react": "^18.2.43",
     "@types/react-test-renderer": "^18.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-config-universe": "^12.0.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3"
+  },
+  "eslintConfig": {
+    "extends": "universe/native"
   },
   "private": true
 }
