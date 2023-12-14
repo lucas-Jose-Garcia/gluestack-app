@@ -1,5 +1,6 @@
 import {
   EyeOffIcon,
+  EyeIcon,
   Heading,
   VStack,
   InputSlot,
@@ -10,7 +11,6 @@ import {
   InputIcon,
   FormControl,
   ButtonText,
-  EyeIcon,
 } from '@gluestack-ui/themed';
 import { AlertBox } from 'components/Alert';
 import { WarningModal } from 'components/Dialog';
@@ -82,7 +82,11 @@ export function Home() {
             <Input>
               <InputField type={showPassword ? 'text' : 'password'} />
               <InputSlot pr="$3" onPress={handleState}>
-                <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="$darkBlue500" />
+                {showPassword ? (
+                  <InputIcon as={EyeIcon} color="$darkBlue500" />
+                ) : (
+                  <InputIcon as={EyeOffIcon} color="$darkBlue500" />
+                )}
               </InputSlot>
             </Input>
           </VStack>
