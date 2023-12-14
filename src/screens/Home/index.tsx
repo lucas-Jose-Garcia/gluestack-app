@@ -1,4 +1,17 @@
-import { Button, Text } from '@gluestack-ui/themed';
+import {
+  EyeOffIcon,
+  Heading,
+  VStack,
+  InputSlot,
+  Button,
+  Input,
+  Text,
+  InputField,
+  InputIcon,
+  FormControl,
+  ButtonText,
+  EyeIcon,
+} from '@gluestack-ui/themed';
 import { AlertBox } from 'components/Alert';
 import { WarningModal } from 'components/Dialog';
 import { Layout } from 'components/Layout';
@@ -6,6 +19,14 @@ import { useState } from 'react';
 
 export function Home() {
   const [showAlertDialog, setShowAlertDialog] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleState = () => {
+    setShowPassword((showState) => {
+      return !showState;
+    });
+  };
+
   return (
     <Layout>
       <Text size="lg" bold>
@@ -31,6 +52,49 @@ export function Home() {
           action: () => setShowAlertDialog(false),
         }}
       />
+
+      <Input variant="outline" size="md" m="$4">
+        <InputField placeholder="Digite o texto..." keyboardType="number-pad" />
+      </Input>
+
+      <FormControl
+        p="$4"
+        borderWidth="$1"
+        borderRadius="$lg"
+        borderColor="$borderLight300"
+        sx={{
+          _dark: {
+            borderWidth: '$1',
+            borderRadius: '$lg',
+            borderColor: '$borderDark800',
+          },
+        }}>
+        <VStack w="$72" space="xl">
+          <Heading lineHeight="$md">Login</Heading>
+          <VStack space="xs">
+            <Text lineHeight="$xs">Email</Text>
+            <Input>
+              <InputField type="text" />
+            </Input>
+          </VStack>
+          <VStack space="xs">
+            <Text lineHeight="$xs">Password</Text>
+            <Input>
+              <InputField type={showPassword ? 'text' : 'password'} />
+              <InputSlot pr="$3" onPress={handleState}>
+                <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="$darkBlue500" />
+              </InputSlot>
+            </Input>
+          </VStack>
+          <Button
+            ml="auto"
+            onPress={() => {
+              console.log('Press');
+            }}>
+            <ButtonText color="$white">Save</ButtonText>
+          </Button>
+        </VStack>
+      </FormControl>
     </Layout>
   );
 }
