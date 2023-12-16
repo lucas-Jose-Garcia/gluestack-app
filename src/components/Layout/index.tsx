@@ -15,6 +15,7 @@ export function Layout({ children, ...props }: LayoutProps) {
       <Box
         flex={1}
         alignItems="center"
+        px="$4"
         sx={{
           bg: colorMode === 'light' ? '$backgroundLight0' : '$backgroundDark900',
         }}

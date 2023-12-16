@@ -53,7 +53,13 @@ export function WarningModal({ title, message, button, show, setShow }: WarningM
               }}>
               <ButtonText>Cancelar</ButtonText>
             </Button>
-            <Button bg="$error600" action="negative" onPress={() => button.action()}>
+            <Button
+              bg="$error600"
+              action="negative"
+              onPress={() => {
+                button.action();
+                setShow(false);
+              }}>
               <ButtonText>{button.title}</ButtonText>
             </Button>
           </ButtonGroup>
