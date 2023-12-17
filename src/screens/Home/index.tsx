@@ -1,8 +1,8 @@
 import { Button, Input, Text, InputField } from '@gluestack-ui/themed';
 import { AlertBox } from 'components/Alert';
-import { WarningModal } from 'components/Dialog';
 import { Layout } from 'components/Layout';
 import { SelectData } from 'components/SelectData';
+import { WarningModal } from 'components/WarningModal';
 import { useState } from 'react';
 
 const infoSelect = [
@@ -50,6 +50,7 @@ export function Home() {
         message={`Este é um exemplo de um AlertDialog aplicado a um componente. O Valor selecionado é ${selected}`}
         button={{
           title: 'Apagar',
+          type: 'negative',
           action: () => console.log(`O valor é: ${selected}`),
         }}
       />

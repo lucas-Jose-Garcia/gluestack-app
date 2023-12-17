@@ -26,6 +26,7 @@ interface WarningModalProps {
 
 interface buttonProps {
   title: string;
+  type?: 'primary' | 'secondary' | 'positive' | 'negative' | 'default';
   action: () => void;
 }
 
@@ -55,7 +56,7 @@ export function WarningModal({ title, message, button, show, setShow }: WarningM
             </Button>
             <Button
               bg="$error600"
-              action="negative"
+              action={button.type ?? 'default'}
               onPress={() => {
                 button.action();
                 setShow(false);
