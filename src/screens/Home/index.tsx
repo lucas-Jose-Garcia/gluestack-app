@@ -1,4 +1,4 @@
-import { Button, Input, Text, InputField } from '@gluestack-ui/themed';
+import { Button, Input, Text, InputField, HStack } from '@gluestack-ui/themed';
 import { AlertBox } from 'components/Alert';
 import { Layout } from 'components/Layout';
 import { SelectData } from 'components/SelectData';
@@ -28,13 +28,13 @@ const infoSelect = [
   },
 ];
 
-export function Home() {
+export function Home({ navigation }) {
   const [showAlertDialog, setShowAlertDialog] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>('');
 
   return (
     <Layout>
-      <Text size="lg" bold>
+      <Text size="xl" bold>
         Kit inicial
       </Text>
 
@@ -61,9 +61,14 @@ export function Home() {
 
       <SelectData data={infoSelect} selectedValue={selected} onChange={setSelected} />
 
-      <Button onPress={() => setShowAlertDialog(true)} my="$4">
-        <Text color="$textLight0">Abrir alerta</Text>
-      </Button>
+      <HStack w="$full" justifyContent="space-between">
+        <Button variant="solid" action="secondary" my="$4" onPress={() => setShowAlertDialog(true)}>
+          <Text color="$textLight0">Abrir alerta</Text>
+        </Button>
+        <Button my="$4" onPress={() => navigation.navigate('SecondPage')}>
+          <Text color="$textLight0">Abrir Página</Text>
+        </Button>
+      </HStack>
     </Layout>
   );
 }
