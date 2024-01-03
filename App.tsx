@@ -1,9 +1,10 @@
-import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { NavigationContainer } from '@react-navigation/native';
 import { CustomStatusBar } from 'components/CustomStatusBar';
 import { useColorScheme } from 'react-native';
 import { Routes } from 'routes';
+
+import { config } from './config/gluestack-ui.config';
 
 export default function App() {
   const colorScheme = useColorScheme();
