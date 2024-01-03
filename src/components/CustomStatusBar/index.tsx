@@ -5,7 +5,7 @@ export function CustomStatusBar() {
   const colorMode = useColorMode();
   const backgroundColor = useToken(
     'colors',
-    colorMode === 'light' ? 'backgroundLight0' : 'backgroundDark900'
+    colorMode === 'light' ? 'backgroundLight0' : 'backgroundDark900',
   );
 
   return <StatusBar backgroundColor={backgroundColor} />;
